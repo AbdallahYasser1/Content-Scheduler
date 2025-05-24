@@ -53,6 +53,7 @@ class AnalyticsService
                 ->groupBy('status')
                 ->get()
                 ->toArray();
+
             $postStatusCounts = array_column($postStatusCounts, 'count', 'status');
 
             return [

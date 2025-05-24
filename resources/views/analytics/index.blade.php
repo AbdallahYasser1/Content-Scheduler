@@ -131,17 +131,17 @@
                                                                     $percentage = $total > 0 ? ($count / $total) * 100 : 0;
                                                                 @endphp
                                                                 <div class="d-flex align-items-center mb-2 gap-2">
-    <span class="badge
-        {{ $status == \App\Enums\PostStatusEnum::DRAFT->value ? 'bg-secondary' :
-           ($status == \App\Enums\PostStatusEnum::SCHEDULED->value ? 'bg-info' : 'bg-success') }}">
-        {{ ucfirst(\App\Enums\PostStatusEnum::tryFrom($status)->label()) }}
-    </span>
+                                                                    <span class="badge
+                                                                        {{ $status == \App\Enums\PostStatusEnum::DRAFT->value ? 'bg-secondary' :
+                                                                           ($status == \App\Enums\PostStatusEnum::SCHEDULED->value ? 'bg-info' : 'bg-success') }}">
+                                                                        {{ ucfirst(\App\Enums\PostStatusEnum::tryFrom($status)->label()) }}
+                                                                    </span>
 
                                                                     <div class="progress flex-grow-1"
                                                                          style="height: 20px; max-width: 200px;">
                                                                         <div class="progress-bar
-            {{ $status == \App\Enums\PostStatusEnum::DRAFT->value ? 'bg-secondary' :
-               ($status == \App\Enums\PostStatusEnum::SCHEDULED->value ? 'bg-info' : 'bg-success') }}"
+                                                                        {{ $status == \App\Enums\PostStatusEnum::DRAFT->value ? 'bg-secondary' :
+                                                                           ($status == \App\Enums\PostStatusEnum::SCHEDULED->value ? 'bg-info' : 'bg-success') }}"
                                                                              role="progressbar"
                                                                              style="width: {{ $percentage }}%"
                                                                              aria-valuenow="{{ $count }}"
