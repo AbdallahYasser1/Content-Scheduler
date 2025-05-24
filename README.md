@@ -67,6 +67,7 @@ QUEUE_CONNECTION=database # For background processing
 ```bash
 php artisan migrate
 php artisan db:seed
+php artisan db:seed --class=PostSeeder # if you want to seed a random posts 
 ```
 
 8. Start the development server:
