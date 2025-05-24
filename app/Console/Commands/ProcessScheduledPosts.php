@@ -44,7 +44,7 @@ class ProcessScheduledPosts extends Command
             $this->info("Queued post #{$post->id}: {$post->title}");
         }
 
-        $upcomingPosts = Post::where('status', 'scheduled')
+        $upcomingPosts = Post::where('status', PostStatusEnum::SCHEDULED->value)
             ->where('scheduled_time', '>', now())
             ->where('scheduled_time', '<=', now()->addHour())
             ->with('platforms')
