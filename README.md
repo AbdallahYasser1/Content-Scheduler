@@ -29,7 +29,7 @@ A Laravel application that lets users create and schedule posts across multiple 
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd content-sch
+cd Content-Scheduler
 ```
 
 2. Install PHP dependencies:
