@@ -17,13 +17,12 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::first(); // You can use specific user: User::find(1);
+        $user = User::first();
         if (!$user) {
             $this->command->error('No users found. Please seed users first.');
             return;
         }
 
-        // Simulate login
         auth()->login($user);
 
         $postService = App::make(PostService::class);
@@ -40,7 +39,7 @@ class PostSeeder extends Seeder
             PostStatusEnum::PUBLISHED,
         ];
 
-        $platforms = Platform::inRandomOrder()->limit(2)->pluck('id')->toArray(); // adjust as needed
+        $platforms = Platform::inRandomOrder()->limit(2)->pluck('id')->toArray();
 
         for ($i = 1; $i <= 20; $i++) {
             $status = $statuses[array_rand($statuses)];
@@ -56,6 +55,20 @@ class PostSeeder extends Seeder
             ])->createPost();
         }
 
-        $this->command->info('20 posts created using PostService.');
+        for ($i = 21; $i <= 26; $i++) {
+            $status = $statuses[array_rand($statuses)];
+            $image = $images[array_rand($images)];
+
+            $postService->setData([
+                'title' => "Sample Post #$i",
+                'content' => "This is the content for post number $i.",
+                'image_url' => $image,
+                'scheduled_time' => $status === PostStatusEnum::SCHEDULED ? now()->addDays(rand(6, 10)) : null,
+                'status' => $status,
+                'platforms' => $platforms,
+            ])->createPost();
+        }
+
+        $this->command->info('Posts Seeding Completed.');
     }
 }

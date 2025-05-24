@@ -95,7 +95,7 @@ class PostController extends Controller
     {
         $this->authorize('update', $post);
 
-        if (!in_array($post->status, ['draft', 'scheduled'])) {
+        if (!in_array($post->status->value, PostStatusEnum::editableStatus())) {
             return redirect()->route('posts.index')
                 ->with('error', 'Only draft or scheduled posts can be updated.');
         }

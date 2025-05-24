@@ -93,7 +93,8 @@ class PostService
             $this->post->platforms()->sync($platformData);
         }
         if ($this->post->status == PostStatusEnum::SCHEDULED) {
-            PublishPost::dispatch($this->post)->delay(date_diff(now(), $this->post->scheduled_time));
+            $delay = Carbon::parse($this->post->scheduled_time)->diffInSeconds(now(), true);
+            PublishPost::dispatch($this->post)->delay($delay);
         }
         LogUserActivity::dispatch(
             Auth::id(),

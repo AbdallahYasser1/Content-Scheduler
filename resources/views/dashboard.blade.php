@@ -30,39 +30,39 @@
                                         <div class="d-flex justify-content-between mb-3">
                                             <span>Total Posts:</span>
                                             <span class="badge bg-primary rounded-pill">
-                                            {{ array_sum($analytics['post_status_counts'] ?? []) }}
+                                            {{ array_sum($postsAnalytics['post_status_counts'] ?? []) }}
                                         </span>
                                         </div>
                                         <div class="d-flex justify-content-between mb-3">
                                             <span>Published:</span>
                                             <span class="badge bg-success rounded-pill">
-                                            {{ $analytics['post_status_counts'][\App\Enums\PostStatusEnum::PUBLISHED->value] ?? 0 }}
+                                            {{ $postsAnalytics['post_status_counts'][\App\Enums\PostStatusEnum::PUBLISHED->value] ?? 0 }}
                                         </span>
                                         </div>
                                         <div class="d-flex justify-content-between mb-3">
                                             <span>Scheduled:</span>
                                             <span class="badge bg-warning rounded-pill">
-                                            {{ $analytics['post_status_counts'][\App\Enums\PostStatusEnum::SCHEDULED->value] ?? 0 }}
+                                            {{ $postsAnalytics['post_status_counts'][\App\Enums\PostStatusEnum::SCHEDULED->value] ?? 0 }}
                                         </span>
                                         </div>
                                         <div class="d-flex justify-content-between mb-3">
                                             <span>Draft:</span>
                                             <span class="badge bg-secondary rounded-pill">
-                                            {{ $analytics['post_status_counts'][\App\Enums\PostStatusEnum::DRAFT->value] ?? 0 }}
+                                            {{ $postsAnalytics['post_status_counts'][\App\Enums\PostStatusEnum::DRAFT->value] ?? 0 }}
                                         </span>
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <span>Success Rate:</span>
                                             <span class="badge bg-info rounded-pill">
-                                            {{ $analytics['publishing_stats']['success_rate'] ?? 0 }}%
+                                            {{ $postsAnalytics['publishing_stats']['success_rate'] ?? 0 }}%
                                         </span>
                                         </div>
 
-                                        @if(isset($analytics['posts_per_platform']) && count($analytics['posts_per_platform']) > 0)
+                                        @if(isset($postsAnalytics['posts_per_platform']) && count($postsAnalytics['posts_per_platform']) > 0)
                                             <hr>
                                             <h6 class="mb-2">Posts by Platform:</h6>
                                             <div class="d-flex flex-wrap">
-                                                @foreach($analytics['posts_per_platform'] as $platform)
+                                                @foreach($postsAnalytics['posts_per_platform'] as $platform)
                                                     <div class="platform-badge me-2 mb-2">
                                                         <i class="bi bi-{{ strtolower(str_replace(' ', '', $platform->name)) }}"></i>
                                                         {{ $platform->name }}: {{ $platform->post_count }}

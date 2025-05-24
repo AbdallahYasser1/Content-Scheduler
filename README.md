@@ -67,9 +67,11 @@ QUEUE_CONNECTION=database # For background processing
 ```bash
 php artisan migrate
 php artisan db:seed
-php artisan db:seed --class=PostSeeder # if you want to seed a random posts 
 ```
 
+```bash
+php artisan db:seed --class=PostSeeder # if you want to seed a random posts 
+```
 8. Start the development server:
 ```bash
 php artisan serve
@@ -111,7 +113,7 @@ php aritsan queue:work
 To process scheduled posts manually (A Mocking ), run: (Make sure that there are scheduled posts in the database)
 
 ```bash
-php artisan process:posts
+php artisan posts:process
 ```
 
 This command will:
